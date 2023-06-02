@@ -1,0 +1,63 @@
+
+<div class="container my-5 bg-dark rounded-5  w-50" style="height:400px; background-color: rgba(0,0,0,8);">
+    <form [formGroup]="productForm" (submit)="formOperation($event)" class="container justify-content-between my-5 mb-5 w-90">
+        <div class="form-group mb-2 ">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="productName"
+                aria-describedby="emailHelp" placeholder="Enter product name">
+            <ng-container *ngIf="getProductName.touched">
+                <div *ngIf="getProductName.hasError('required')" id="emailHelp" class="form-text text-danger">
+                    Product name is required
+                </div>
+                <div *ngIf="getProductName.hasError('minLength')" id="emailHelp" class="form-text text-danger">
+                    Product name length is greater than 5
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group mb-2 ">
+            <label for="exampleInputPassword1">Price</label>
+            <input type="number" class="form-control" formControlName="price" id="exampleInputPassword1"
+                placeholder="enter your Price">
+            <ng-container *ngIf="getProductPrice.touched">
+                <div *ngIf="getProductPrice.hasError('required')" id="" class="form-text text-danger">
+                    price is required
+                </div>
+                <div *ngIf="getProductPrice.hasError('min')" id="" class="form-text text-danger">
+                    price is at least 9
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group mb-2 ">
+            <label for="exampleInputPassword1">Quantity</label>
+            <input type="number" class="form-control" formControlName="quantity" id="exampleInputPassword1"
+                placeholder="enter your quantity">
+            <ng-container *ngIf="getProductQuantity.touched">
+                <div *ngIf="getProductQuantity.hasError('required')" id="" class="form-text text-danger">
+                    required
+                </div>
+                <div *ngIf="getProductQuantity.hasError('min')" id="" class="form-text text-danger">
+                    quantity must be more than 2
+                </div>
+                <!--{{productForm.value | json}}-->
+
+            </ng-container>
+        </div>
+
+        <div class="form-group mb-2 ">
+            <label for="exampleInputPassword1">Image</label>
+            <input type="text" class="form-control" formControlName="image" id="exampleInputPassword1"
+                placeholder="enter your image link">
+            <ng-container *ngIf="getProductImage.touched">
+                <div *ngIf="getProductQuantity.hasError('required')" id="" class="form-text text-danger">
+                    required
+                </div>
+                <div *ngIf="getProductQuantity.hasError('min')" id="" class="form-text text-danger">
+                    image length must be more than 20
+                </div>
+                <!--{{productForm.value | json}}-->
+
+            </ng-container>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">{{productId == 0 ?'Add Product':'Edit'}}</button>
+    </form>
+</div>
